@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f6f0">
-  <meta name="description" content="Marta Anna Sofron — niezależna badaczka językoznawstwa stosowanego i nauczycielka języka angielskiego. Badania, projekty, wystąpienia i doświadczenie.">
+  <meta name="description" content="Antoni Sofron — Hyeon Mu Jin (현무진, 賢武進). Biografia, projekty, publikacje, media i kontakt.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Marta Anna Sofron — Research & Language Education">
-  <meta property="og:description" content="Badania, edukacja językowa i projekty na styku języków, kultury oraz codzienności.">
+  <meta property="og:title" content="AntoniSofron | Antoni Sofron — Hyeon Mu Jin">
+  <meta property="og:description" content="Osobista strona Antoniego Sofrona: biografia, projekty, publikacje, media i kontakt.">
   <meta property="og:locale" content="pl_PL">
-  <title>Marta Anna Sofron | Research & Language Education</title>
+  <title>AntoniSofron | Antoni Sofron — Hyeon Mu Jin</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
@@ -17,124 +17,106 @@
 <body>
   <a href="#main" class="skip-link" data-i18n="skip">Przejdź do treści</a>
   <div class="site-shell">
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Marta Anna Sofron — strona główna">
-        <span class="brand-symbol" aria-hidden="true">m<span class="brand-dot">.</span></span>
-        <span class="brand-text"><strong>MARTA ANNA SOFRON</strong><small>RESEARCH · LANGUAGE · EDUCATION</small></span>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="AntoniSofron — strona główna">
+        <span class="brand-symbol" aria-hidden="true">a<span class="brand-dot">.</span></span>
+        <span class="brand-text"><strong>ANTONISOFRON</strong><small>OSOBISTA STRONA / PORTFOLIO</small></span>
       </a>
-      <nav class="desktop-nav" aria-label="Główna nawigacja">
-        <a href="#o-mnie" data-i18n="navAbout">O mnie</a>
-        <a href="#badania" data-i18n="navResearch">Badania</a>
+      <nav class="desktop-nav" id="main-navigation" aria-label="Główna nawigacja">
+        <a href="#biografia" data-i18n="navBio">Biografia</a>
         <a href="#projekty" data-i18n="navProjects">Projekty</a>
-        <a href="#doswiadczenie" data-i18n="navExperience">Doświadczenie</a>
+        <a href="#publikacje" data-i18n="navPublications">Publikacje</a>
+        <a href="#media" data-i18n="navMedia">Media</a>
         <a href="#kontakt" data-i18n="navContact">Kontakt</a>
       </nav>
       <div class="header-actions">
-        <button type="button" id="language-toggle" class="control-button language-button" aria-label="Switch language to English">EN</button>
-        <button type="button" id="theme-toggle" class="control-button theme-button" aria-label="Włącz ciemny motyw" title="Zmień motyw"><span class="theme-icon" aria-hidden="true">☾</span></button>
-        <a class="mobile-menu-link" href="#projekty" aria-label="Przejdź do projektów"><span aria-hidden="true">↗</span></a>
+        <button type="button" id="language-toggle" class="control-button language-button" aria-label="Dostępny język: polski. Inne wersje językowe nie są jeszcze dostępne." title="Język polski — inne wersje w przygotowaniu" disabled><span>PL</span><span class="lang-lock" aria-hidden="true"></span></button>
+        <button type="button" id="menu-toggle" class="mobile-menu-button" aria-label="Otwórz menu" aria-controls="main-navigation" aria-expanded="false"><span aria-hidden="true">☰</span></button>
       </div>
     </header>
 
     <main id="main">
-      <section id="top" class="hero section-padding">
+      <section class="hero section-padding" aria-labelledby="hero-name">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="heroKicker">NIEZALEŻNA BADACZKA · NAUCZYCIELKA</span></div>
-          <h1 data-i18n-html="heroTitle">Między <em>językiem</em><br>a jego <em>użyciem.</em></h1>
-          <p class="hero-description" data-i18n="heroDesc">Jestem Martą Anną Sofron. Badam, jak ludzie uczą się języków i jak korzystają z nich poza podręcznikiem. Łączę perspektywę językoznawczą z ponad dekadą doświadczenia dydaktycznego.</p>
+          <div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="heroKicker">ANTONISOFRON / STRONA OSOBISTA</span></div>
+          <h1 class="personal-name" id="hero-name"><span class="name-polish">Antoni Sofron</span><span class="name-dash" aria-hidden="true">—</span><span class="name-korean"><span class="name-transcription">Hyeon Mu Jin</span><span class="name-subtitle"><span lang="ko">현무진</span> <span lang="ko-Hani">(賢武進)</span></span></span></h1>
+          <p class="hero-description" data-i18n="heroDesc">Moja przestrzeń w sieci — biografia, projekty związane z językami i kulturą, publikacje oraz materiały, które tworzę i udostępniam.</p>
           <div class="hero-cta">
-            <a class="button-primary" href="#projekty"><span data-i18n="heroProjects">Poznaj moje projekty</span><span aria-hidden="true">↗</span></a>
-            <a class="button-text" href="#o-mnie"><span data-i18n="heroAbout">Więcej o mnie</span><span aria-hidden="true">↓</span></a>
+            <a class="button-primary" href="#projekty"><span data-i18n="heroProjects">Zobacz projekty</span><span aria-hidden="true">↗</span></a>
+            <a class="button-text" href="#biografia"><span data-i18n="heroBio">Poznaj moją biografię</span><span aria-hidden="true">↓</span></a>
           </div>
-          <div class="hero-notes" aria-label="Główne obszary">
-            <span>APPLIED LINGUISTICS</span><span class="separator" aria-hidden="true">✳</span>
-            <span>SECOND LANGUAGE ACQUISITION</span><span class="separator" aria-hidden="true">✳</span>
-            <span>LANGUAGE EDUCATION</span>
-          </div>
+          <div class="hero-notes" aria-label="Obszary zainteresowań"><span>JĘZYKOZNAWSTWO</span><span class="separator" aria-hidden="true">✳</span><span>KULTURA</span><span class="separator" aria-hidden="true">✳</span><span>MEDIA</span></div>
         </div>
-        <div class="hero-art" aria-label="Abstrakcyjna kompozycja typograficzna dotycząca języków">
-          <span class="art-corner art-corner-top">FIELD NOTES / 001</span>
-          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
-          <div class="art-orb"></div>
-          <span class="art-word art-word-1">language</span>
-          <span class="art-word art-word-2">culture</span>
-          <span class="art-word art-word-3">learning</span>
+        <div class="hero-art" aria-label="Abstrakcyjna kompozycja ze słowami w języku polskim, koreańskim i rosyjskim">
+          <span class="art-corner art-corner-top">NOTATNIK / 001</span>
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-orb"></div>
+          <span class="art-word art-word-1" lang="pl">język</span>
+          <span class="art-word art-word-2" lang="ko">언어</span>
+          <span class="art-word art-word-3" lang="ru">язык</span>
           <span class="art-symbol" aria-hidden="true">↗</span>
-          <span class="art-corner art-corner-bottom">WORDS IN MOTION<br>RESEARCH IN PRACTICE</span>
+          <span class="art-corner art-corner-bottom">JĘZYK · TOŻSAMOŚĆ<br>KULTURA · HISTORIA</span>
         </div>
         <div class="hero-index" aria-hidden="true">01 <span>/</span> 05</div>
       </section>
 
-      <div class="statement-band" aria-label="Myśl przewodnia">
-        <span class="statement-icon" aria-hidden="true">✳</span>
-        <p data-i18n="manifesto">Język nie kończy się na lekcji. Zaczyna żyć wszędzie tam, gdzie spotyka się z człowiekiem.</p>
-        <span class="statement-right">RESEARCH / PRACTICE</span>
-      </div>
+      <div class="statement-band"><span class="statement-icon" aria-hidden="true">✳</span><p data-i18n="manifesto">Języki opowiadają nie tylko o słowach — również o ludziach, historii i tożsamości.</p><span class="statement-right">LANGUAGE / IDENTITY</span></div>
 
-      <section class="content-section about-section" id="o-mnie">
-        <div class="section-heading"><span class="section-number">01 / <span data-i18n="secOneTag">O MNIE</span></span><h2 data-i18n-html="aboutHeading">Lingwistyka z <em>ludzkiej perspektywy.</em></h2></div>
+      <section class="content-section about-section" id="biografia">
+        <div class="section-heading"><span class="section-number">01 / BIOGRAFIA</span><h2 data-i18n-html="bioHeading">Kilka słów <em>o mnie.</em></h2></div>
         <div class="about-grid">
-          <div class="about-intro"><span class="small-kicker" data-i18n="aboutKicker">KILKA SŁÓW O MNIE</span><p class="about-lead" data-i18n="aboutLead">Jestem magistrem filologii angielskiej, nauczycielką i niezależną badaczką, dla której teoria języka i codzienna praktyka edukacyjna wzajemnie się uzupełniają.</p></div>
-          <div class="about-details"><p data-i18n="aboutText1">Ukończyłam studia magisterskie na Uniwersytecie Jagiellońskim (2023), specjalizując się w językoznawstwie. W pracy naukowej interesują mnie m.in. nabywanie języka drugiego, transfer międzyjęzykowy, wielojęzyczność i uczenie się angielskiego poza formalną edukacją.</p><p data-i18n="aboutText2">W badaniach szukam pytań, które mają znaczenie również dla nauczycieli i osób uczących się języków. Szczególnie ciekawi mnie relacja między doświadczeniem językowym, środowiskiem kulturowym a rzeczywistymi wyborami komunikacyjnymi.</p><div class="fact-row"><span data-i18n="factDegreeLabel">Wykształcenie</span><strong data-i18n="factDegree">MA English Philology · UJ, 2023</strong></div><div class="fact-row"><span data-i18n="factWorkLabel">Praktyka</span><strong data-i18n="factWork">10+ lat pracy dydaktycznej</strong></div><div class="fact-row"><span data-i18n="factFocusLabel">Specjalizacja</span><strong>Applied Linguistics · EFL · SLA</strong></div></div>
-        </div>
-      </section>
-
-      <section class="content-section research-section" id="badania">
-        <div class="section-heading"><span class="section-number">02 / <span data-i18n="secTwoTag">BADANIA</span></span><h2 data-i18n-html="researchHeading">Pytania, które <em>mnie zajmują.</em></h2><p class="heading-description" data-i18n="researchIntro">Pracuję na styku językoznawstwa stosowanego, psycholingwistyki i edukacji językowej.</p></div>
-        <div class="research-grid">
-          <article class="research-card"><span class="research-card-no">01 —</span><div class="research-card-icon" aria-hidden="true">↗</div><h3>Extramural English</h3><p data-i18n="research1">Kontakt z angielskim poza szkołą: media, literatura, internet, rozrywka i codzienne praktyki młodzieży.</p><span class="research-tag">EFL / EVERYDAY LIFE</span></article>
-          <article class="research-card"><span class="research-card-no">02 —</span><div class="research-card-icon" aria-hidden="true">⇄</div><h3>Cross-linguistic influence</h3><p data-i18n="research2">Wpływ wcześniej poznanych języków na użycie angielskiego — od wyborów gramatycznych po transfer.</p><span class="research-tag">CLI / MULTILINGUALISM</span></article>
-          <article class="research-card"><span class="research-card-no">03 —</span><div class="research-card-icon" aria-hidden="true">✳</div><h3>Language & culture</h3><p data-i18n="research3">Jak treści kulturowe, teksty i media kształtują uczenie się języka, interpretację i komunikację.</p><span class="research-tag">CULTURE / PEDAGOGY</span></article>
-        </div>
-      </section>
-
-      <section class="content-section projects-section" id="projekty">
-        <div class="section-heading"><span class="section-number">03 / <span data-i18n="secThreeTag">PROJEKTY</span></span><h2 data-i18n-html="projectsHeading">Prace, pomysły, <em>poszukiwania.</em></h2><p class="heading-description" data-i18n="projectsIntro">Wybrane projekty badawcze i koncepcje. Tutaj z czasem pojawią się odsyłacze do publikacji, materiałów i repozytoriów.</p></div>
-        <div class="projects-grid">
-          <article class="project-card featured-project">
-            <div class="project-meta"><span class="project-type" data-i18n="project1Type">BADANIE W TOKU</span><span>2026 —</span></div>
-            <div class="project-shape" aria-hidden="true"><span>A</span><span>↗</span><span>z</span></div>
-            <h3>English beyond the classroom</h3>
-            <p data-i18n="project1Desc">Projekt dotyczący sposobów, w jakie polscy licealiści korzystają z języka angielskiego poza edukacją formalną — od treści cyfrowych po samodzielne praktyki językowe.</p>
-            <div class="project-footer"><div class="project-chips"><span>EXTRAMURAL ENGLISH</span><span>POLAND</span></div><a class="project-link" id="link-project-1" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="projectLink">Otwórz projekt</span><span aria-hidden="true">↗</span></a><span class="project-status" id="status-project-1" data-i18n="projectStatus1">Szczegóły wkrótce</span></div>
-          </article>
-          <article class="project-card">
-            <div class="project-meta"><span class="project-type" data-i18n="project2Type">BADANIE AKADEMICKIE</span><span>2023</span></div>
-            <div class="project-mark" aria-hidden="true">≠</div>
-            <h3>When prepositions cross borders</h3>
-            <p data-i18n="project2Desc">Badanie transferu międzyjęzykowego w użyciu angielskich przyimków przez osoby uczące się angielskiego z różnych środowisk językowych. Temat pracy magisterskiej.</p>
-            <div class="project-footer"><div class="project-chips"><span>CLI</span><span>EFL</span></div><a class="project-link" id="link-project-2" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="projectLink">Otwórz projekt</span><span aria-hidden="true">↗</span></a><span class="project-status" id="status-project-2" data-i18n="projectStatus2">Opis badania</span></div>
-          </article>
-          <article class="project-card">
-            <div class="project-meta"><span class="project-type" data-i18n="project3Type">KONCEPCJA TEKSTU</span><span>IN PROGRESS</span></div>
-            <div class="project-mark project-mark-asterisk" aria-hidden="true">✳</div>
-            <h3>From Orwell to Netflix</h3>
-            <p data-i18n="project3Desc">Koncepcja artykułu o kulturze popularnej, krytycznej interpretacji i roli treści kulturowych na lekcjach języka angielskiego.</p>
-            <div class="project-footer"><div class="project-chips"><span>CULTURE</span><span>EFL</span></div><a class="project-link" id="link-project-3" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="projectLink">Otwórz projekt</span><span aria-hidden="true">↗</span></a><span class="project-status" id="status-project-3" data-i18n="projectStatus3">W przygotowaniu</span></div>
-          </article>
-          <article class="project-card add-project-card">
-            <span class="project-plus" aria-hidden="true">+</span><h3 data-i18n="addProjectTitle">Przestrzeń na kolejne projekty</h3><p data-i18n="addProjectDesc">Publikacje, materiały edukacyjne, repozytoria, notatki badawcze i wszystko, czym warto się podzielić.</p><span class="project-placeholder-caption" data-i18n="addProjectNote">Ta sekcja jest gotowa do rozbudowy.</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section experience-section" id="doswiadczenie">
-        <div class="section-heading"><span class="section-number">04 / <span data-i18n="secFourTag">DOŚWIADCZENIE</span></span><h2 data-i18n-html="experienceHeading">Między badaniem <em>a praktyką.</em></h2></div>
-        <div class="experience-grid">
-          <div class="experience-quote"><span class="quote-star">✳</span><p data-i18n="experienceQuote">Najciekawsze pytania badawcze często zaczynają się od czegoś, co dzieje się na zwykłej lekcji.</p><span class="quote-line"></span><span class="quote-caption">RESEARCH MEETS CLASSROOM</span></div>
-          <div class="timeline">
-            <div class="timeline-item"><div class="timeline-time" data-i18n="timeline1Date">OBECNIE</div><div><h3 data-i18n="timeline1Title">Niezależne badania językoznawcze</h3><p data-i18n="timeline1Desc">Projekty z zakresu językoznawstwa stosowanego, nabywania języków i codziennego kontaktu z angielskim.</p></div></div>
-            <div class="timeline-item"><div class="timeline-time" data-i18n="timeline2Date">PONAD 10 LAT</div><div><h3 data-i18n="timeline2Title">Nauczanie języka angielskiego</h3><p data-i18n="timeline2Desc">Praca dydaktyczna z uczniami, przygotowanie do egzaminów i wspieranie rozwoju kompetencji językowych.</p></div></div>
-            <div class="timeline-item"><div class="timeline-time">2023</div><div><h3 data-i18n="timeline3Title">Magister filologii angielskiej</h3><p data-i18n="timeline3Desc">Uniwersytet Jagielloński · specjalizacja językoznawcza · badanie nad transferem międzyjęzykowym.</p></div></div>
-            <div class="timeline-item"><div class="timeline-time">2026</div><div><h3 data-i18n="timeline4Title">Tematy wystąpień naukowych</h3><p data-i18n="timeline4Desc">„Między systemami językowymi…” oraz „Beyond one-size-fits-all language education…” — wybrane tematy w obszarze językoznawstwa i edukacji.</p></div></div>
+          <div class="about-intro"><span class="small-kicker" data-i18n="bioKicker">ANTONI SOFRON / 현무진</span><p class="about-lead" data-i18n="bioLead">Interesuję się językami, ich historią oraz tym, w jaki sposób kultura i tożsamość wpływają na komunikację.</p></div>
+          <div class="about-details">
+            <p data-i18n="bioText1">Na tej stronie zbieram swoje projekty, materiały i publikacje. Szczególnie bliskie są mi zagadnienia związane z językiem koreańskim, językami słowiańskimi, etymologią i dziedzictwem kulturowym.</p>
+            <p data-i18n="bioText2">Chcę, żeby AntoniSofron był miejscem, do którego można wrócić po informacje o nowych projektach, tekstach i treściach medialnych — bez przeszukiwania kilku różnych platform.</p>
+            <div class="fact-row"><span data-i18n="bioFact1Label">Obszary</span><strong data-i18n="bioFact1">Języki · historia · kultura</strong></div>
+            <div class="fact-row"><span data-i18n="bioFact2Label">Tematyka</span><strong data-i18n="bioFact2">Korea · Słowiańszczyzna · etymologia</strong></div>
+            <div class="fact-row"><span data-i18n="bioFact3Label">W sieci</span><strong>AntoniSofron</strong></div>
           </div>
         </div>
       </section>
 
+      <section class="content-section projects-section" id="projekty">
+        <div class="section-heading"><span class="section-number">02 / PROJEKTY</span><h2 data-i18n-html="projectsHeading">Pomysły, które <em>rozwijam.</em></h2><p class="heading-description" data-i18n="projectsIntro">Wybrane inicjatywy oraz przestrzeń na przyszłe prace. Odsyłacze można uzupełniać w jednym pliku.</p></div>
+        <div class="projects-grid">
+          <article class="project-card featured-project">
+            <div class="project-meta"><span class="project-type" data-i18n="project1Type">PROJEKT JĘZYKOWY</span><span>01</span></div>
+            <div class="project-shape" aria-hidden="true"><span>А</span><span>↗</span><span>ě</span></div>
+            <h3>Dictionarium</h3>
+            <p data-i18n="project1Desc">Projekt słownika i zestawień słownictwa prasłowiańskiego oraz języków słowiańskich — narzędzie do porównań, nauki i eksplorowania etymologii.</p>
+            <div class="project-footer"><div class="project-chips"><span>SŁOWIAŃSZCZYZNA</span><span>SŁOWNIK</span></div><a class="project-link" id="link-project-1" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="openProject">Otwórz projekt</span><span aria-hidden="true">↗</span></a><span class="project-status" id="status-project-1" data-i18n="linkSoon">Link do uzupełnienia</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-meta"><span class="project-type" data-i18n="project2Type">PROJEKT MEDIALNY</span><span>02</span></div><div class="project-mark" aria-hidden="true">한</div>
+            <h3>Sofroniki po koreańsku</h3><p data-i18n="project2Desc">Treści poświęcone językowi i kulturze koreańskiej, tożsamości oraz historii Koryo-saram.</p>
+            <div class="project-footer"><div class="project-chips"><span>KOREA</span><span>MEDIA</span></div><a class="project-link" id="link-project-2" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="openProject">Otwórz projekt</span><span aria-hidden="true">↗</span></a><span class="project-status" id="status-project-2" data-i18n="linkSoon">Link do uzupełnienia</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-meta"><span class="project-type" data-i18n="project3Type">NOTATKI I OPRACOWANIA</span><span>03</span></div><div class="project-mark project-mark-asterisk" aria-hidden="true">✳</div>
+            <h3 data-i18n="project3Title">Etymologie i rekonstrukcje</h3><p data-i18n="project3Desc">Miejsce na analizy historii wyrazów, zestawienia międzyjęzykowe i materiały związane z rozwojem języków słowiańskich.</p>
+            <div class="project-footer"><div class="project-chips"><span>ETYMOLOGIA</span><span>JĘZYKOZNAWSTWO</span></div><a class="project-link" id="link-project-3" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="openProject">Otwórz projekt</span><span aria-hidden="true">↗</span></a><span class="project-status" id="status-project-3" data-i18n="linkSoon">Link do uzupełnienia</span></div>
+          </article>
+          <article class="project-card add-project-card"><span class="project-plus" aria-hidden="true">+</span><h3 data-i18n="newProjectHeading">Kolejne projekty</h3><p data-i18n="newProjectDesc">Miejsce na następne inicjatywy, repozytoria, materiały i współprace.</p><span class="project-placeholder-caption" data-i18n="newProjectNote">SEKCJA GOTOWA DO ROZBUDOWY</span></article>
+        </div>
+      </section>
+
+      <section class="content-section publications-section" id="publikacje">
+        <div class="section-heading"><span class="section-number">03 / PUBLIKACJE</span><h2 data-i18n-html="pubHeading">Teksty i <em>publikacje.</em></h2><p class="heading-description" data-i18n="pubIntro">Tutaj pojawi się wykaz artykułów, esejów, opracowań oraz odsyłacze do pełnych tekstów.</p></div>
+        <div class="publication-empty"><span class="publication-icon" aria-hidden="true">↗</span><div><span class="small-kicker" data-i18n="pubState">BIBLIOGRAFIA</span><h3 data-i18n="pubSoon">Wkrótce pojawią się pierwsze pozycje.</h3><p data-i18n="pubNote">Sekcja czeka na uzupełnienie zweryfikowanymi tytułami, datami i linkami. Nic nie jest tutaj przedstawiane jako opublikowane bez potwierdzenia.</p></div></div>
+      </section>
+
+      <section class="content-section media-section" id="media">
+        <div class="section-heading"><span class="section-number">04 / MEDIA</span><h2 data-i18n-html="mediaHeading">Znajdź mnie <em>w sieci.</em></h2><p class="heading-description" data-i18n="mediaIntro">Treści wideo, krótsze formy, materiały językowe i aktualności z projektów.</p></div>
+        <div class="research-grid media-grid">
+          <article class="research-card media-card"><span class="research-card-no">01 — TIKTOK</span><div class="research-card-icon" aria-hidden="true">↗</div><h3>TikTok</h3><p data-i18n="mediaTiktok">Krótkie materiały o języku i kulturze koreańskiej oraz tematy związane z Koryo-saram.</p><a class="media-link" id="link-tiktok" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="goProfile">Przejdź do profilu</span> <span aria-hidden="true">↗</span></a><span class="media-unavailable" id="status-tiktok" data-i18n="linkSoon">Link do uzupełnienia</span></article>
+          <article class="research-card media-card"><span class="research-card-no">02 — INSTAGRAM</span><div class="research-card-icon" aria-hidden="true">◎</div><h3>Instagram</h3><p data-i18n="mediaInstagram">Zdjęcia, aktualizacje i materiały związane z prowadzonymi projektami.</p><a class="media-link" id="link-instagram" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="goProfile">Przejdź do profilu</span> <span aria-hidden="true">↗</span></a><span class="media-unavailable" id="status-instagram" data-i18n="linkSoon">Link do uzupełnienia</span></article>
+          <article class="research-card media-card"><span class="research-card-no">03 — YOUTUBE</span><div class="research-card-icon" aria-hidden="true">▷</div><h3>YouTube</h3><p data-i18n="mediaYoutube">Dłuższe nagrania i opowieści o językach, kulturze oraz tożsamości.</p><a class="media-link" id="link-youtube" target="_blank" rel="noopener noreferrer" hidden><span data-i18n="goChannel">Przejdź do kanału</span> <span aria-hidden="true">↗</span></a><span class="media-unavailable" id="status-youtube" data-i18n="linkSoon">Link do uzupełnienia</span></article>
+        </div>
+      </section>
+
       <section class="contact-section" id="kontakt">
-        <span class="section-number light">05 / <span data-i18n="secFiveTag">KONTAKT</span></span>
-        <div class="contact-content"><div><h2 data-i18n-html="contactHeading">Porozmawiajmy <em>o języku.</em></h2><p data-i18n="contactDesc">O badaniach, współpracy, edukacji i pomysłach, które łączą te światy. Chętnie poznaję nowe perspektywy.</p></div><div class="contact-action"><a id="email-link" class="contact-main-link" hidden><span data-i18n="contactEmail">Napisz do mnie</span><span aria-hidden="true">↗</span></a><span id="contact-placeholder" class="contact-placeholder" data-i18n="contactPlaceholder">Link kontaktowy do uzupełnienia przed publikacją</span><div class="social-links" id="social-links" aria-label="Profile zewnętrzne"></div></div></div>
-        <footer class="footer"><span>© <span id="year">2026</span> MARTA ANNA SOFRON</span><span data-i18n="footerTagline">RESEARCH · LANGUAGE · EDUCATION</span><a href="#top" data-i18n="backTop">↑ Na górę</a></footer>
+        <span class="section-number light">05 / KONTAKT</span>
+        <div class="contact-content"><div><h2 data-i18n-html="contactHeading">Bądźmy <em>w kontakcie.</em></h2><p data-i18n="contactDesc">Masz pytanie, pomysł na współpracę albo chcesz porozmawiać o jednym z projektów? Tutaj znajdziesz odpowiednie odsyłacze.</p></div><div class="contact-action"><a id="email-link" class="contact-main-link" hidden><span data-i18n="writeToMe">Napisz do mnie</span><span aria-hidden="true">↗</span></a><span id="contact-placeholder" class="contact-placeholder" data-i18n="contactSoon">Adres e-mail można dodać w ustawieniach strony.</span><div class="social-links" id="social-links" aria-label="Profile zewnętrzne"></div></div></div>
+        <footer class="footer"><span>© <span id="year">2026</span> ANTONI SOFRON · HYEON MU JIN</span><span>ANTONISOFRON</span><a href="#top" data-i18n="backTop">↑ Na górę</a></footer>
       </section>
     </main>
   </div>
