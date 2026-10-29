@@ -186,3 +186,36 @@ a:focus-visible, button:focus-visible {outline:3px solid var(--accent);outline-o
   .hero h1.personal-name{font-size:34px;}
   .name-subtitle{font-size:17px;}
 }
+
+
+/* Osobne podstrony — wspólny styl i nawigacja. */
+.desktop-nav a[aria-current="page"] {color:var(--green-dark); position:relative; font-weight:800;}
+.desktop-nav a[aria-current="page"]::after {content:""; position:absolute;left:0;right:0;bottom:-11px;height:2px;background:var(--green);}
+.page-hero {padding-top:88px;padding-bottom:84px;border-bottom:1px solid var(--line);background:var(--paper);}
+.page-hero .eyebrow {margin-bottom:39px;}
+.page-hero-main {display:flex;justify-content:space-between;align-items:end;gap:40px;}
+.page-hero h1 {font-family:var(--serif);font-weight:400;font-size:clamp(76px,10vw,152px);letter-spacing:-.075em;line-height:.94;margin:0 0 26px;}
+.page-title-dot {color:#8eab9b;}
+.page-hero p {font-size:16px;line-height:1.85;color:var(--ink-soft);max-width:650px;margin:0;}
+.page-hero-count {font-family:var(--serif);font-size:28px;color:var(--muted);white-space:nowrap; margin-bottom:4px;}
+.page-hero-count span {color:#b6c6b9;font-size:18px;}
+.site-footer-band {background:var(--green-dark); padding:0 max(5.7vw,calc((100vw - 1440px)/2));}
+.site-footer-band .footer {min-height:87px;}
+/* Strona kontaktu korzysta z oryginalnego, ciemnego układu. */
+.contact-section {min-height:510px;}
+@media(min-width:1600px){.site-footer-band{padding-left:max(5.7vw,calc((100vw - 1400px)/2));padding-right:max(5.7vw,calc((100vw - 1400px)/2));}}
+@media(max-width:850px){
+ .page-hero {padding:70px 5% 68px;}
+ .site-footer-band {padding:0 5%;}
+ .desktop-nav a[aria-current="page"]::after {display:none;}
+ .desktop-nav a[aria-current="page"]{border-left:3px solid var(--green);padding-left:14px;}
+}
+@media(max-width:600px){
+ .page-hero {padding:56px 5% 57px;}
+ .page-hero .eyebrow {margin-bottom:29px;}
+ .page-hero h1{font-size:clamp(58px,13vw,82px);margin-bottom:22px;}
+ .page-hero-main {align-items:start;}
+ .page-hero p{font-size:14px;}
+ .page-hero-count{display:none;}
+ .site-footer-band .footer {padding:23px 0;}
+}
