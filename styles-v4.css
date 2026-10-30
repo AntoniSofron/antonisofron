@@ -396,3 +396,26 @@ body { padding-top:var(--header-height); }
 @media (max-width:850px) { :root { --header-height:96px; } }
 @media (max-width:600px) { :root { --header-height:84px; } .brand-script-pair{gap:4px;} }
 @media (max-width:370px) { :root { --header-height:76px; } .brand-script-pair{gap:3px;} }
+
+
+/* v4.1: korekta proporcji nagłówka zgodnie z uwagą użytkownika */
+.brand-name,.brand-latin{font-size:18px;letter-spacing:.065em;}
+.brand-hangul,.brand-hanja{font-size:14px;}
+.brand-script-pair{gap:6px;}
+@media (max-width:1150px){
+  .brand-name,.brand-latin{font-size:16px;letter-spacing:.05em;}
+  .brand-hangul,.brand-hanja{font-size:12px;}
+}
+@media (max-width:850px){
+  .brand-name,.brand-latin{font-size:15px;}
+  .brand-hangul,.brand-hanja{font-size:12px;}
+}
+@media (max-width:600px){
+  .brand-name,.brand-latin{font-size:13px;letter-spacing:.035em;}
+  .brand-hangul,.brand-hanja{font-size:11px;}
+  .brand-script-pair{gap:4px;}
+}
+@media (max-width:370px){
+  .brand-name,.brand-latin{font-size:12px;}
+  .brand-hangul,.brand-hanja{font-size:10px;}
+}
