@@ -1,7 +1,7 @@
 /* AntoniSofron — konfiguracja wspólna dla wszystkich podstron.
    Wypełnij tylko dane, które mają być publiczne. */
 const SITE_CONFIG = {
-  email: '',
+  email: 'antonisofron@gmail.com',
   github: '',
   orcid: '',
   googleScholar: '',
