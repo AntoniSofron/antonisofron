@@ -18,7 +18,6 @@ const TRANSLATIONS = {
   // en: { skip: 'Skip to content', navBio: 'Biography', ... }
 };
 const REQUIRED_TRANSLATION_KEYS = [
-  "backTop",
   "bioChapter1Text",
   "bioChapter2Text",
   "bioChapter3Text",
@@ -150,7 +149,6 @@ if (emailLink && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
 const contactPlaceholder = document.getElementById('contact-placeholder');
 if (contactPlaceholder && ((social && social.children.length > 0) || (emailLink && !emailLink.hidden)))
   contactPlaceholder.hidden = true;
-document.querySelectorAll('#year').forEach(el => {el.textContent = String(new Date().getFullYear());});
 
 // Mobilna nawigacja po podstronach.
 const menuButton = document.getElementById('menu-toggle');
