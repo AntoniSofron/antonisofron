@@ -6,9 +6,6 @@ const SITE_CONFIG = {
   orcid: '',
   googleScholar: '',
   linkedin: '',
-  project1: '', // Dictionarium
-  project2: 'https://www.tiktok.com/@sofroniki_po_koreansku',
-  project3: '', // Etymologie i rekonstrukcje
   tiktok: 'https://www.tiktok.com/@sofroniki_po_koreansku',
   instagram: 'https://www.instagram.com/sofroniki_po_koreansku/',
   youtube: ''
@@ -133,7 +130,7 @@ function setLink(id, candidate, statusId) {
   const status = document.getElementById(statusId);
   if (status) status.hidden = true;
 }
-for (let i = 1; i <= 3; i++) setLink('link-project-' + i, SITE_CONFIG['project' + i], 'status-project-' + i);
+// Linki pięciu projektów są przypisane bezpośrednio w projekty/index.html.
 for (const platform of ['tiktok', 'instagram', 'youtube'])
   setLink('link-' + platform, SITE_CONFIG[platform], 'status-' + platform);
 const social = document.getElementById('social-links');
