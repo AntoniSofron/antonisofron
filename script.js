@@ -179,3 +179,39 @@ if (document.body.dataset.page === 'biografia') {
   const destination = oldAnchors[window.location.hash.toLowerCase()];
   if (destination) window.location.replace(new URL(destination, document.baseURI).href);
 }
+
+
+// Kopiowanie poprawnego opisu bibliograficznego w formie tekstowej.
+const apaCopy = document.getElementById('apa-copy-first');
+if (apaCopy) apaCopy.addEventListener('click', async () => {
+  const value = apaCopy.getAttribute('data-copy-citation');
+  const label = apaCopy.querySelector('.apa-copy-label');
+  const oldText = label.textContent;
+  try {
+    const citation = document.querySelector('.apa-citation');
+    if (citation && navigator.clipboard.write && typeof ClipboardItem !== 'undefined') {
+      const rich = '<p>' + citation.innerHTML + '</p>';
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([rich], {type:'text/html'}),
+        'text/plain': new Blob([value], {type:'text/plain'})
+      })]);
+    } else {
+      await navigator.clipboard.writeText(value);
+    }
+    label.textContent = 'Skopiowano';
+    apaCopy.setAttribute('aria-label','Cytowanie skopiowane');
+    window.setTimeout(() => {
+      label.textContent = oldText;
+      apaCopy.setAttribute('aria-label','Skopiuj cytowanie APA do schowka');
+    },2000);
+  } catch (_) {
+    label.textContent = 'Zaznacz i skopiuj cytat';
+    const p = document.querySelector('.apa-citation');
+    if (p && window.getSelection) {
+      const range = document.createRange();
+      range.selectNodeContents(p);
+      const selection = window.getSelection();
+      selection.removeAllRanges(); selection.addRange(range);
+    }
+  }
+});
