@@ -1485,3 +1485,23 @@ body { padding-top:var(--header-height); }
 .projects-grid-v28 .project-card-v28.sofpack-card .project-external-link span{
   color:#D7B3BC;
 }
+
+
+/* v42 — graficzne symbole projektów Sofron Pack */
+.project-symbol-image-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+.project-symbol-image{
+  display:block;
+  width:clamp(8.75rem, 12vw, 10.5rem);
+  height:auto;
+  max-width:100%;
+  image-rendering:pixelated;
+}
+@media (max-width: 640px){
+  .project-symbol-image{
+    width:clamp(7.25rem, 42vw, 9rem);
+  }
+}
