@@ -1509,10 +1509,10 @@ body { padding-top:var(--header-height); }
 
 /* v43 — wycięte grafiki, bez zbędnej przezroczystej przestrzeni. */
 .projects-grid-v28 .project-card-v28.sofpack-card .project-symbol-image-wrap {
-  top:115px;
+  top:84px;
 }
 @media (max-width:600px) {
   .projects-grid-v28 .project-card-v28.sofpack-card .project-symbol-image-wrap {
-    top:100px;
+    top:72px;
   }
 }
