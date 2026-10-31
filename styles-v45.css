@@ -1533,5 +1533,41 @@ body { padding-top:var(--header-height); }
   -webkit-text-fill-color:currentColor;
 }
 .projects-grid-v28 .sofpack-card h3 .project-title-suffix-ocd {
-  color:#6BBE30;
+  color:#FBF8FF;
+  -webkit-text-fill-color:currentColor;
+}
+
+
+/* v46 — symbol Dictionarium zastępuje literę ě, a oCd wraca do zwykłej wersji. */
+.projects-grid-v28 .featured-project-v28 .dictionarium-symbol-wrap{
+  top:22px;
+  right:28px;
+  width:min(28vw, 250px);
+  height:auto;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-end;
+  opacity:.34;
+}
+.projects-grid-v28 .featured-project-v28 .dictionarium-symbol-image{
+  width:100%;
+  max-width:250px;
+  height:auto;
+  image-rendering:auto;
+}
+@media (max-width: 900px){
+  .projects-grid-v28 .featured-project-v28 .dictionarium-symbol-wrap{
+    top:30px;
+    right:20px;
+    width:min(34vw, 190px);
+    opacity:.26;
+  }
+}
+@media (max-width: 600px){
+  .projects-grid-v28 .featured-project-v28 .dictionarium-symbol-wrap{
+    top:18px;
+    right:14px;
+    width:min(38vw, 140px);
+    opacity:.22;
+  }
 }
