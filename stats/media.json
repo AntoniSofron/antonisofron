@@ -1,4 +1,23 @@
 {
-  "updated_at": null,
-  "profiles": {}
+  "profiles": {
+    "sclavorum": {
+      "approximate": true,
+      "checked_at": "2026-11-01T23:44:48Z",
+      "source": "Discord",
+      "value": 491
+    },
+    "sofron_discord": {
+      "approximate": true,
+      "checked_at": "2026-11-01T23:44:52Z",
+      "source": "Discord",
+      "value": 769
+    },
+    "sofroniki_tiktok": {
+      "approximate": false,
+      "checked_at": "2026-11-01T23:44:50Z",
+      "source": "TikTok",
+      "value": 3085
+    }
+  },
+  "updated_at": "2026-11-01T23:44:52Z"
 }
