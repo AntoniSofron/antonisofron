@@ -224,7 +224,7 @@ if (document.querySelector('[data-project-stats]')) {
     sofrongen: ['sofrongen', 'sofron-pack'],
     sofronlight: ['sofronlight']
   };
-  const fmt = new Intl.NumberFormat('pl-PL');
+  const fmt = new Intl.NumberFormat('pl-PL', { useGrouping: true });
   let cached = null;
   const freshMR = {};
   function wholeSum(sources, measure) {
