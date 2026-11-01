@@ -1,0 +1,61 @@
+/* AntoniSofron v50 — sześć kart Media. Pozostałe podstrony bez zmian. */
+.media-grid-v50{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
+.media-grid-v50 .media-card,
+.media-grid-v50 .media-card:last-child{
+  grid-column:auto;
+  min-height:334px;
+  padding:30px 29px 27px;
+}
+.media-grid-v50 .media-card .research-card-icon{
+  margin:25px 0 10px;
+  min-height:40px;
+  display:flex;
+  align-items:center;
+  font-size:42px;
+}
+.media-grid-v50 .media-card .research-card-icon svg {
+  width:40px;
+  height:40px;
+  stroke:currentColor;
+}
+.media-grid-v50 .media-card h3{
+  margin:4px 0 2px;
+}
+.media-grid-v50 .media-handle{
+  display:block;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  color:var(--ink-soft);
+  font-size:12px;
+  line-height:1.65;
+}
+.media-grid-v50 .media-card p {
+  margin:15px 0 22px;
+  font-size:13px;
+  line-height:1.75;
+}
+.media-grid-v50 .media-card .media-link{
+  margin-top:auto;
+}
+@media(max-width:950px){
+  .media-grid-v50{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:600px){
+  .media-grid-v50{grid-template-columns:1fr;}
+  .media-grid-v50 .media-card,
+  .media-grid-v50 .media-card:last-child{
+    min-height:296px;
+    padding:25px;
+  }
+  .media-grid-v50 .media-card .research-card-icon{margin:18px 0 8px;}
+}
+
+/* v52 — pierwsza karta Discord jest zwykłą kartą Media; zajmuje jedynie cały wiersz. */
+.media-grid-v50 .media-card.media-wide-card,
+.media-grid-v50 .media-card.media-wide-card:last-child {
+  grid-column:1 / -1;
+}
