@@ -31,11 +31,21 @@ jobs:
         env:
           CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
         run: python tools/update_stats.py
+      - name: Pobierz statystyki Discord i mediów
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TIKTOK_RESEARCH_ACCESS_TOKEN: ${{ secrets.TIKTOK_RESEARCH_ACCESS_TOKEN }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: |
+          python -m py_compile tools/update_social_stats.py
+          python tools/update_social_stats.py
       - name: Zapisz dane w repozytorium
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add stats/sofron-pack.json
+          git add stats/sofron-pack.json stats/media.json
           if ! git diff --cached --quiet; then
             git commit -m 'Aktualizacja statystyk Sofron Pack'
             git push
