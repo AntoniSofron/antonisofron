@@ -1,9 +1,73 @@
 {
-  "updated_at": null,
   "projects": {
-    "sofron16": {"expected_curseforge":1, "modrinth":{}, "curseforge":{}},
-    "sofronocd": {"expected_curseforge":1, "modrinth":{}, "curseforge":{}},
-    "sofrongen": {"expected_curseforge":2, "modrinth":{}, "curseforge":{}},
-    "sofronlight": {"expected_curseforge":1, "modrinth":{}, "curseforge":{}}
-  }
+    "sofron16": {
+      "curseforge": {
+        "1563902": {
+          "downloads": 647,
+          "favorites": 1
+        }
+      },
+      "expected_curseforge": 1,
+      "modrinth": {
+        "sofron16": {
+          "downloads": 831,
+          "followers": 18
+        }
+      }
+    },
+    "sofrongen": {
+      "curseforge": {
+        "1712000": {
+          "downloads": 48,
+          "favorites": 0
+        },
+        "sofrongen-mod": {
+          "downloads": 0,
+          "favorites": 0
+        }
+      },
+      "expected_curseforge": 2,
+      "modrinth": {
+        "sofron-pack": {
+          "downloads": 140,
+          "followers": 4
+        },
+        "sofrongen": {
+          "downloads": 0,
+          "followers": 0
+        }
+      }
+    },
+    "sofronlight": {
+      "curseforge": {
+        "1745496": {
+          "downloads": 47,
+          "favorites": 1
+        }
+      },
+      "expected_curseforge": 1,
+      "modrinth": {
+        "sofronlight": {
+          "downloads": 0,
+          "followers": 0
+        }
+      }
+    },
+    "sofronocd": {
+      "curseforge": {
+        "269923": {
+          "downloads": 735969,
+          "favorites": 81
+        }
+      },
+      "expected_curseforge": 1,
+      "modrinth": {
+        "sofronocd": {
+          "downloads": 1276,
+          "followers": 8
+        }
+      }
+    }
+  },
+  "updated_at": "2026-11-01T12:36:31Z"
 }
