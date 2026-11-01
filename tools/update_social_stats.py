@@ -197,10 +197,15 @@ def main():
                 "checked_at": iso_now()
             }
             prev = profiles.get(profile_id, {})
-            # Nie zapisuj nowego commita, gdy liczby się nie zmieniły.
-            # Znacznik checked_at będzie datą ostatniej zmiany, nie świeżości strony.
-            if prev.get("value") == n and prev.get("approximate") == approximate:
-                record["checked_at"] = prev.get("checked_at") or record["checked_at"]
+            # Odświeżaj znacznik kontroli przynajmniej co 6 godzin.
+            # Dzięki temu stale równe liczby nie wyglądają na przeterminowane.
+            try:
+                checked = dt.datetime.fromisoformat(str(prev.get("checked_at", "")).replace("Z", "+00:00"))
+                recent = (dt.datetime.now(dt.timezone.utc) - checked).total_seconds() < 21600
+            except (ValueError, TypeError):
+                recent = False
+            if prev.get("value") == n and prev.get("approximate") == approximate and recent:
+                record["checked_at"] = prev["checked_at"]
             if prev != record:
                 profiles[profile_id] = record
                 dirty = True
