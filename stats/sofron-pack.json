@@ -1,0 +1,9 @@
+{
+  "updated_at": null,
+  "projects": {
+    "sofron16": {"expected_curseforge":1, "modrinth":{}, "curseforge":{}},
+    "sofronocd": {"expected_curseforge":1, "modrinth":{}, "curseforge":{}},
+    "sofrongen": {"expected_curseforge":2, "modrinth":{}, "curseforge":{}},
+    "sofronlight": {"expected_curseforge":1, "modrinth":{}, "curseforge":{}}
+  }
+}

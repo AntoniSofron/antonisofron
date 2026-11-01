@@ -213,3 +213,73 @@ if (apaCopy) apaCopy.addEventListener('click', async () => {
     }
   }
 });
+
+
+// Statystyki Sofron Pack: plik JSON odnawiany przez GitHub Actions.
+// Modrinth dodatkowo odświeżamy przy każdej wizycie i co 2 minuty.
+if (document.querySelector('[data-project-stats]')) {
+  const PROJECTS = {
+    sofron16: ['sofron16'],
+    sofronocd: ['sofronocd'],
+    sofrongen: ['sofrongen', 'sofron-pack'],
+    sofronlight: ['sofronlight']
+  };
+  const fmt = new Intl.NumberFormat('pl-PL');
+  let cached = null;
+  const freshMR = {};
+  function wholeSum(sources, measure) {
+    if (!sources.length || sources.some(s => !s || !Number.isSafeInteger(s[measure]) || s[measure] < 0)) return null;
+    return sources.reduce((n,s) => n+s[measure], 0);
+  }
+  function renderStats() {
+    for (const [id, slugs] of Object.entries(PROJECTS)) {
+      const root = document.querySelector(`[data-project-stats="${id}"]`);
+      if (!root) continue;
+      const rec = cached?.projects?.[id];
+      const mr = slugs.map(slug => freshMR[slug] || rec?.modrinth?.[slug]);
+      const cf = Object.values(rec?.curseforge || {});
+      const downloadsM = wholeSum(mr, 'downloads');
+      const followsM = wholeSum(mr, 'followers');
+      const downloadsC = cf.length ? wholeSum(cf,'downloads') : null;
+      const favoritesC = cf.length ? wholeSum(cf,'favorites') : null;
+      const completeC = rec?.expected_curseforge === cf.length;
+      const downloads = completeC && downloadsM !== null && downloadsC !== null ? downloadsM+downloadsC : null;
+      const likes = completeC && followsM !== null && favoritesC !== null ? followsM+favoritesC : null;
+      root.querySelector('.project-downloads').textContent = downloads === null ? '—' : fmt.format(downloads);
+      root.querySelector('.project-favorites').textContent = likes === null ? '—' : fmt.format(likes);
+      if (downloads === null || likes === null) {
+        root.setAttribute('data-partial', '');
+        root.title = 'Nie udało się jeszcze pobrać kompletnych danych Modrinth + CurseForge';
+      } else {
+        root.removeAttribute('data-partial');
+        root.title = 'Suma Modrinth + CurseForge. Dane z CurseForge aktualizowane cyklicznie.';
+      }
+    }
+  }
+  async function refreshCached() {
+    try {
+      const response = await fetch(`../stats/sofron-pack.json?t=${Date.now()}`, {cache:'no-store'});
+      if (response.ok) cached = await response.json();
+    } catch (_) { /* Sieć niedostępna; zachowaj poprzednie statystyki. */ }
+    renderStats();
+  }
+  async function refreshModrinth() {
+    await Promise.allSettled([...new Set(Object.values(PROJECTS).flat())].map(async slug => {
+      try {
+        const response = await fetch(`https://api.modrinth.com/v2/project/${encodeURIComponent(slug)}`, {cache:'no-store'});
+        if (!response.ok) return;
+        const p = await response.json();
+        if (Number.isSafeInteger(p.downloads) && Number.isSafeInteger(p.followers))
+          freshMR[slug] = {downloads:p.downloads,followers:p.followers};
+      } catch (_) { /* Użyj statystyk z pliku, jeśli dostępne. */ }
+    }));
+    renderStats();
+  }
+  refreshCached();
+  refreshModrinth();
+  setInterval(refreshCached, 60000);
+  setInterval(refreshModrinth, 120000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {refreshCached();refreshModrinth();}
+  });
+}
