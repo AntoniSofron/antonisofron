@@ -1650,3 +1650,27 @@ body { padding-top:var(--header-height); }
  .projects-grid-v28 .sofpack-card .project-meta-with-stats{column-gap:8px;}
  .projects-grid-v28 .sofpack-card .project-live-stats{font-size:10px;gap:9px;}
 }
+
+
+/* Nowa pozycja Galeria w nawigacji — bez ściskania sześciu linków. */
+@media(min-width:1121px){
+  .desktop-nav{gap:clamp(11px,1.35vw,23px);}
+  .desktop-nav a{font-size:clamp(10.5px,.86vw,12px);}
+}
+@media(min-width:851px) and (max-width:1120px){
+  .mobile-menu-button{display:flex;}
+  .desktop-nav{
+    display:none;
+    position:absolute;
+    top:calc(100% - 1px);
+    left:0;right:0;z-index:40;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:18px 5% 24px;
+    box-shadow:0 18px 38px rgba(45,48,51,.10);
+  }
+  .desktop-nav.is-open{display:flex;flex-direction:column;align-items:stretch;gap:0;}
+  .desktop-nav a{padding:14px 3px;border-bottom:1px solid var(--line);font-size:15px;}
+  .desktop-nav a[aria-current="page"]::after{display:none;}
+  .desktop-nav a[aria-current="page"]{border-left:3px solid var(--accent);padding-left:14px;}
+}
