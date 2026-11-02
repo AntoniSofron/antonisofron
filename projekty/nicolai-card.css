@@ -1,39 +1,37 @@
-/* Dictionarium Sancti Nicolai: druga szeroka karta słownika. */
-.projects-grid-v28 .project-card-v28.nicolai-featured {
-  min-height:355px;
-}
+/* Dictionarium Sancti Nicolai — obraz św. Mikołaja ma identyczny
+   punkt zakotwiczenia, szerokość kontenera i wyrównanie jak obraz św. Marty.
+   Zachowujemy przycięcie dolnej części przez krawędź karty. */
 .projects-grid-v28 .nicolai-featured .dictionarium-meta .nicolai-symbol-wrap {
-  width:clamp(117px, 15vw, 164px);
-  height:clamp(220px, 24vw, 285px);
+  position:absolute;
   top:calc(100% + 8px);
-  right:10px;
+  right:0;
+  width:min(28vw,250px);
+  height:auto;
+  display:flex;
   align-items:flex-start;
-  justify-content:center;
+  justify-content:flex-end;
   opacity:1;
 }
-.projects-grid-v28 .nicolai-featured .nicolai-symbol-image {
+.projects-grid-v28 .nicolai-featured .dictionarium-meta .nicolai-symbol-image {
   display:block;
-  width:auto;
-  height:100%;
-  max-width:100%;
-  max-height:285px;
+  width:100%;
+  max-width:250px;
+  height:auto;
+  max-height:none;
   object-fit:contain;
-  object-position:center top;
+  object-position:top right;
   image-rendering:auto;
 }
+/* Układ tytułu pozostaje czytelny obok grafiki. */
 .projects-grid-v28 .nicolai-featured .project-content-v28 {
   padding-right:clamp(105px,19vw,205px);
 }
-.projects-grid-v28 .nicolai-featured .project-content-v28 h3 {
-  max-width:680px;
-}
-.projects-grid-v28 .nicolai-featured .project-content-v28 p {
-  max-width:620px;
-}
+.projects-grid-v28 .nicolai-featured .project-content-v28 h3 {max-width:680px;}
+.projects-grid-v28 .nicolai-featured .project-content-v28 p {max-width:620px;}
 @media(max-width:900px) {
   .projects-grid-v28 .nicolai-featured .dictionarium-meta .nicolai-symbol-wrap {
-    width:clamp(105px,17vw,142px);
-    height:clamp(205px,26vw,260px);
+    width:min(34vw,190px);
+    top:calc(100% + 8px);
     right:0;
   }
   .projects-grid-v28 .nicolai-featured .project-content-v28 {
@@ -41,19 +39,17 @@
   }
 }
 @media(max-width:600px) {
+  /* Jak u Marty: grafika we własnym wierszu pod datą. */
   .projects-grid-v28 .nicolai-featured .dictionarium-meta .nicolai-symbol-wrap {
     position:static;
     grid-column:2;
     grid-row:2;
     justify-self:end;
-    width:min(24vw,94px);
-    height:164px;
+    width:min(25vw,94px);
+    height:auto;
     margin-top:8px;
-  }
-  .projects-grid-v28 .nicolai-featured .nicolai-symbol-image {
-    width:auto;
-    height:100%;
-    max-height:164px;
+    right:auto;
+    top:auto;
   }
   .projects-grid-v28 .nicolai-featured .project-content-v28 {
     padding-right:0;
