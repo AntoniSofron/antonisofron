@@ -43,6 +43,7 @@ const REQUIRED_TRANSLATION_KEYS = [
   "navBio",
   "navContact",
   "navMedia",
+  "navGallery",
   "navProjects",
   "navPublications",
   "newProjectDesc",
@@ -173,7 +174,7 @@ if (menuButton && nav) {
 
 // Stare adresy z kotwicami działają po zmianie z jednej strony na pięć.
 if (document.body.dataset.page === 'biografia') {
-  const oldAnchors = {'#projekty':'projekty/','#publikacje':'publikacje/','#media':'media/','#kontakt':'kontakt/'};
+  const oldAnchors = {'#projekty':'projekty/','#publikacje':'publikacje/','#media':'media/','#galeria':'galeria/','#kontakt':'kontakt/'};
   const destination = oldAnchors[window.location.hash.toLowerCase()];
   if (destination) window.location.replace(new URL(destination, document.baseURI).href);
 }
