@@ -23,7 +23,7 @@
           el.setAttribute('aria-label', 'Aktualna liczba obserwujących lub uczestników jest niedostępna');
           continue;
         }
-        count.textContent = (rec.approximate ? '≈ ' : '') + nf.format(value);
+        count.textContent = nf.format(value);
         const unit = el.querySelector('.media-live-unit')?.textContent || 'obserwujących';
         const date = new Date(checked).toLocaleString('pl-PL', {dateStyle:'short',timeStyle:'short'});
         el.setAttribute('aria-label', (rec.approximate ? 'Około ' : '') + nf.format(value) + ' ' + unit);
