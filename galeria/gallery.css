@@ -45,6 +45,8 @@ body.gallery-modal-open {overflow:hidden;}
 .gallery-arrow-prev{left:clamp(9px,2vw,32px);}
 .gallery-arrow-next{right:clamp(9px,2vw,32px);}
 .gallery-arrow:disabled{opacity:.3;cursor:default;}
+.gallery-arrow[hidden],.gallery-viewer-footer[hidden]{display:none!important;}
+
 .gallery-photo-caption{font:400 12px/1.65 var(--sans);color:var(--line);margin:0;padding:7px 22px 9px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;min-height:32px;text-align:center;}
 .gallery-viewer-footer{flex:0 0 auto;padding:15px clamp(15px,3vw,44px) 21px;background:var(--paper-alt);color:var(--ink);border-top:1px solid var(--line);}
 .gallery-viewer-meta{display:flex;justify-content:space-between;gap:12px;font:700 10px/1.4 var(--sans);letter-spacing:.05em;color:var(--ink-soft);margin-bottom:11px;}
