@@ -1,3 +1,16 @@
 {
-  "albums": []
+  "albums": [
+    {
+      "id": "kadry",
+      "title": "Kadry",
+      "description": "Podróże, codzienność i prywatne chwile uchwycone w fotografii.",
+      "photos": []
+    },
+    {
+      "id": "sofron-pack",
+      "title": "Sofron Pack",
+      "description": "Zrzuty ekranu, grafiki i materiały z projektów Minecraft.",
+      "photos": []
+    }
+  ]
 }
