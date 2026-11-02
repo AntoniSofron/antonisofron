@@ -54,12 +54,11 @@
         caption: typeof photo.caption === 'string' ? photo.caption : ''
       };
     }).filter(Boolean);
-    if (!photos.length) return null;
     return {
       id: typeof data.id === 'string' && data.id.trim() ? data.id : String(i + 1),
       title: typeof data.title === 'string' && data.title.trim() ? data.title.trim() : 'Album bez tytułu',
       description: typeof data.description === 'string' ? data.description : '',
-      cover: imageUrl(data.cover) || photos[0].thumb,
+      cover: imageUrl(data.cover) || (photos[0] ? photos[0].thumb : null),
       photos
     };
   }
@@ -97,18 +96,22 @@
       card.type = 'button';
       card.setAttribute('aria-label', 'Otwórz album ' + album.title + ', zdjęć: ' + album.photos.length);
       const cover = make('span', 'gallery-album-cover');
-      const image = make('img', '');
-      image.src = album.cover;
-      image.alt = '';
-      image.loading = 'lazy';
-      image.decoding = 'async';
-      image.addEventListener('error', () => {
-        image.remove();
-        if (!cover.querySelector('svg')) cover.innerHTML = folderIcon;
-      }, {once:true});
-      cover.append(image);
+      if (album.cover) {
+        const image = make('img', '');
+        image.src = album.cover;
+        image.alt = '';
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        image.addEventListener('error', () => {
+          image.remove();
+          if (!cover.querySelector('svg')) cover.innerHTML = folderIcon;
+        }, {once:true});
+        cover.append(image);
+      } else {
+        cover.innerHTML = folderIcon;
+      }
       const copy = make('span', 'gallery-album-copy');
-      const count = make('span', 'gallery-album-topline', 'ALBUM · ' + nf.format(album.photos.length) + (album.photos.length === 1 ? ' ZDJĘCIE' : ' ZDJĘĆ'));
+      const count = make('span', 'gallery-album-topline', album.photos.length ? 'ALBUM · ' + nf.format(album.photos.length) + (album.photos.length === 1 ? ' ZDJĘCIE' : ' ZDJĘĆ') : 'ALBUM · ZDJĘCIA WKRÓTCE');
       const name = make('span', 'gallery-album-name', album.title);
       const description = make('span', 'gallery-album-description', album.description);
       const cta = make('span', 'gallery-album-cta', 'Zobacz album');
@@ -130,6 +133,13 @@
     focusBefore = trigger;
     albumTitle.textContent = album.title;
     thumbs.replaceChildren();
+    mainImage.hidden = true;
+    mainImage.removeAttribute('src');
+    fallback.hidden = true;
+    prevButton.hidden = album.photos.length === 0;
+    nextButton.hidden = album.photos.length === 0;
+    const footer = thumbs.closest('.gallery-viewer-footer');
+    if (footer) footer.hidden = album.photos.length === 0;
     buttons = album.photos.map((photo, i) => {
       const btn = make('button', 'gallery-thumb');
       btn.type = 'button';
@@ -147,7 +157,14 @@
     });
     if (!viewer.open) viewer.showModal();
     document.body.classList.add('gallery-modal-open');
-    showPhoto(0);
+    if (album.photos.length) {
+      showPhoto(0);
+    } else {
+      fallback.hidden = false;
+      fallback.textContent = 'Ten album czeka na pierwsze zdjęcia.';
+      photoCaption.textContent = album.description;
+      photoCount.textContent = '0 / 0';
+    }
     closeButton.focus();
   }
 
