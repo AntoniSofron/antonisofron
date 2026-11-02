@@ -183,6 +183,44 @@ def tiktok_followers(username):
     return n, "TikTok", False
 
 
+def apify_instagram_followers(username):
+    """Pobierz liczbę przez oficjalnego aktora Apify, bez konta Meta Developers.
+    Jedna odpłatna próba maksymalnie raz na 24 godziny na profil.
+    """
+    token = os.getenv("APIFY_API_TOKEN", "").strip()
+    if not token:
+        raise ValueError("Brak APIFY_API_TOKEN")
+    response = SESSION.post(
+        "https://api.apify.com/v2/acts/apify~instagram-followers-count-scraper/run-sync-get-dataset-items",
+        params={"maxItems": "1", "maxTotalChargeUsd": "0.05"},
+        headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"},
+        json={"usernames": [username]},
+        timeout=135,
+    )
+    response.raise_for_status()
+    rows = response.json()
+    if not isinstance(rows, list):
+        raise ValueError("Apify: nieprawidłowy format odpowiedzi")
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        if str(row.get("userName", "")).lstrip("@").lower() != username.lower():
+            continue
+        value = row.get("followersCount")
+        if valid_number(value):
+            return value, "Apify · Instagram", False
+    raise ValueError("Apify: brak liczby obserwujących dla " + username)
+
+
+def apify_checked_recently(value):
+    try:
+        checked = dt.datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        return (checked.tzinfo is not None and
+                0 <= (dt.datetime.now(dt.timezone.utc) - checked).total_seconds() < 86400)
+    except (ValueError, TypeError):
+        return False
+
+
 def instagram_followers(username):
     token = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
     ig_id = os.getenv("INSTAGRAM_USER_ID", "").strip()
@@ -317,19 +355,32 @@ def main():
         stats = {}
     profiles = stats.setdefault("profiles", {})
     public_attempts = stats.setdefault("public_attempts", {})
+    apify_attempts = stats.setdefault("apify_attempts", {})
+    apify_token = os.getenv("APIFY_API_TOKEN", "").strip()
+    meta_token = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
     dirty = False
     for profile_id, (platform, handle) in PROFILES.items():
+        use_apify = platform == "instagram" and bool(apify_token) and not meta_token
+        if use_apify:
+            if apify_checked_recently(apify_attempts.get(profile_id)):
+                print("APIFY POMINIĘTY", profile_id, "limit: jedna próba na 24 godziny")
+                continue
+            apify_attempts[profile_id] = iso_now()
+            dirty = True
         # Anonimowe próby Instagram raz na 6 godzin, zamiast żądań co 10 min.
         # Po skonfigurowaniu oficjalnego tokena sprawdzamy co uruchomienie.
-        if (platform == "instagram" and not os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
+        if (platform == "instagram" and not meta_token and not use_apify
                 and recent_attempt(public_attempts.get(profile_id))):
             print("INSTAGRAM POMINIĘTY", profile_id, "do kolejnej próby anonimowej")
             continue
         try:
             try:
-                n, source, approximate = FETCHERS[platform](handle)
+                if use_apify:
+                    n, source, approximate = apify_instagram_followers(handle)
+                else:
+                    n, source, approximate = FETCHERS[platform](handle)
             except Exception as primary_exc:
-                if platform not in PULSE_URLS:
+                if use_apify or platform not in PULSE_URLS:
                     raise
                 if recent_attempt(public_attempts.get(profile_id)):
                     print("PUBLICZNY ODCZYT POMINIĘTY", profile_id, "do następnej próby za maksymalnie 6 h")
