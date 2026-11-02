@@ -360,6 +360,11 @@ def main():
     meta_token = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
     dirty = False
     for profile_id, (platform, handle) in PROFILES.items():
+        # Ręcznie ustawiona liczba nie jest nadpisywana przez automatyczne źródła.
+        # Po usunięciu pola "manual" można ponownie włączyć odczyt automatyczny.
+        if profiles.get(profile_id, {}).get("manual") is True:
+            print("RĘCZNIE", profile_id, "— pomijam automatyczny odczyt")
+            continue
         use_apify = platform == "instagram" and bool(apify_token) and not meta_token
         if use_apify:
             if apify_checked_recently(apify_attempts.get(profile_id)):
