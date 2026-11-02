@@ -16,7 +16,7 @@
         if (!count) continue;
         const valid = Number.isSafeInteger(value) && value >= 0;
         const checked = rec && Date.parse(rec.checked_at || '');
-        const old = !Number.isFinite(checked) || Date.now() - checked > 48*60*60*1000;
+        const old = !rec?.manual && (!Number.isFinite(checked) || Date.now() - checked > 48*60*60*1000);
         if (!valid || old) {
           count.textContent = '—';
           el.title = 'Aktualna liczba niedostępna. Źródło nie udostępniło ostatnio danych.';
@@ -27,7 +27,7 @@
         const unit = el.querySelector('.media-live-unit')?.textContent || 'obserwujących';
         const date = new Date(checked).toLocaleString('pl-PL', {dateStyle:'short',timeStyle:'short'});
         el.setAttribute('aria-label', (rec.approximate ? 'Około ' : '') + nf.format(value) + ' ' + unit);
-        el.title = (rec.approximate ? 'Liczba przybliżona' : 'Liczba') + ' · ' + (rec.source || 'platforma') + ' · aktualizacja: ' + date;
+        el.title = rec.manual ? 'Wpisano ręcznie · stan na: ' + date : (rec.approximate ? 'Liczba przybliżona' : 'Liczba') + ' · ' + (rec.source || 'platforma') + ' · aktualizacja: ' + date;
       }
     } catch (_e) {
       // Nie nadpisuj sprawdzonych danych, jeżeli chwilowo brak dostępu do sieci.
