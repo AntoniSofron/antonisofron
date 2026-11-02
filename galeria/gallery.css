@@ -38,6 +38,7 @@ body.gallery-modal-open {overflow:hidden;}
 .gallery-close:hover,.gallery-arrow:hover{background:rgba(255,255,255,.12);}
 .gallery-stage{min-height:0;flex:1 1 auto;display:flex;justify-content:center;align-items:center;position:relative;overflow:hidden;padding:15px clamp(45px,7vw,100px);}
 .gallery-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 10px 30px rgba(0,0,0,.12);}
+.gallery-stage [hidden]{display:none!important;}
 .gallery-stage-fallback{font:400 14px/1.7 var(--sans);color:var(--line);text-align:center;max-width:350px;}
 .gallery-arrow{position:absolute;z-index:1;top:50%;transform:translateY(-50%);border:1px solid rgba(255,255,255,.30);background:rgba(45,48,51,.7);color:var(--paper);width:45px;height:57px;cursor:pointer;display:flex;justify-content:center;align-items:center;transition:background .2s;}
 .gallery-arrow svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
