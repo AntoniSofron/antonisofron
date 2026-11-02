@@ -66,6 +66,63 @@ def discord_members(code):
     return n, "Discord", True
 
 
+def youtube_number_label(text):
+    """Wyczytaj publiczną wartość z nagłówka kanału, rozpoznając 1.2K / 15K."""
+    if not isinstance(text, str):
+        return None
+    match = re.search(r"(?<!\w)([\d][\d,]*(?:\.\d+)?)([KMB]?)\s+subscribers?\b", text, re.I)
+    if not match:
+        return None
+    raw, unit = match.group(1), match.group(2).upper()
+    try:
+        scale = {"": 1, "K": 1000, "M": 1000000, "B": 1000000000}[unit]
+        count = round(float(raw.replace(",", "")) * scale)
+    except (ValueError, OverflowError):
+        return None
+    return count if valid_number(count) else None
+
+
+def channel_header_subscribers(html):
+    """Analizuj wyłącznie nagłówek kanału, nie polecane filmy ani komentarze."""
+    decoder = json.JSONDecoder()
+    for m in re.finditer(r"(?:var\s+)?ytInitialData\s*=\s*", html):
+        start = html.find("{", m.end(), m.end() + 80)
+        if start < 0:
+            continue
+        try:
+            data, _ = decoder.raw_decode(html[start:])
+        except (ValueError, TypeError):
+            continue
+        header = data.get("header") or {}
+        def walk(value):
+            if isinstance(value, str):
+                result = youtube_number_label(value)
+                return result
+            if isinstance(value, dict):
+                for k, v in value.items():
+                    if k in {"trackingParams", "commandMetadata", "loggingDirectives"}:
+                        continue
+                    found = walk(v)
+                    if found is not None:
+                        return found
+            elif isinstance(value, list):
+                for v in value:
+                    found = walk(v)
+                    if found is not None:
+                        return found
+            return None
+        count = walk(header)
+        if count is not None:
+            return count
+    # Ograniczony fragment bezpośrednio po właściwości nagłówka.
+    for m in re.finditer(r'"subscriberCountText"\s*:', html):
+        snippet = html[m.end():m.end() + 380]
+        count = youtube_number_label(snippet)
+        if count is not None:
+            return count
+    return None
+
+
 def youtube_subscribers(handle):
     key = os.getenv("YOUTUBE_API_KEY", "").strip()
     if key:
@@ -81,21 +138,18 @@ def youtube_subscribers(handle):
         n = int(stats["subscriberCount"])
         if not valid_number(n):
             raise ValueError("YouTube: nieprawidłowa liczba")
-        # YouTube zaokrągla publiczne liczniki do trzech cyfr znaczących.
         return n, "YouTube Data API", n >= 1000
 
-    # Publiczny HTML jest tylko próbą awaryjną i może nie zawierać licznika.
-    text = get("https://www.youtube.com/@" + handle, params={"hl": "en"}).text
-    m = re.search(
-        r'"subscriberCountText"\s*:\s*\{\s*"(?:simpleText|content)"\s*:\s*"([\d., ]+)\s+subscribers"',
-        text, re.I
-    )
-    if not m:
-        raise ValueError("YouTube: do automatycznego odczytu potrzebny YOUTUBE_API_KEY")
-    n = exact_text_number(m.group(1))
-    if n is None:
-        raise ValueError("YouTube: publiczny licznik zaokrąglony albo niedostępny")
-    return n, "YouTube", False
+    for suffix in ("", "/about"):
+        try:
+            html = get("https://www.youtube.com/@" + handle + suffix,
+                       params={"hl": "en", "gl": "US"}).text
+            count = channel_header_subscribers(html)
+            if count is not None:
+                return count, "YouTube · publiczny nagłówek", count >= 1000
+        except requests.RequestException:
+            continue
+    raise ValueError("YouTube: licznik niedostępny publicznie; ustaw YOUTUBE_API_KEY")
 
 
 def tiktok_followers(username):
