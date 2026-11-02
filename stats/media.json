@@ -1,5 +1,17 @@
 {
   "profiles": {
+    "antoni_x": {
+      "approximate": false,
+      "checked_at": "2026-11-02T10:31:04Z",
+      "source": "FxEmbed · X",
+      "value": 9
+    },
+    "antoni_youtube": {
+      "approximate": false,
+      "checked_at": "2026-11-02T10:31:04Z",
+      "source": "YouTube · publiczny nagłówek",
+      "value": 362
+    },
     "sclavorum": {
       "approximate": true,
       "checked_at": "2026-11-02T08:11:06Z",
@@ -17,6 +29,12 @@
       "checked_at": "2026-11-02T08:11:06Z",
       "source": "TikTok",
       "value": 3085
+    },
+    "sofroniki_youtube": {
+      "approximate": false,
+      "checked_at": "2026-11-02T10:31:03Z",
+      "source": "YouTube · publiczny nagłówek",
+      "value": 508
     }
   },
   "public_attempts": {
@@ -25,5 +43,5 @@
     "sofroniki_instagram": "2026-11-02T10:28:41Z",
     "sofroniki_youtube": "2026-11-02T10:28:43Z"
   },
-  "updated_at": "2026-11-02T10:28:44Z"
+  "updated_at": "2026-11-02T10:31:04Z"
 }
