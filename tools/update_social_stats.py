@@ -245,6 +245,24 @@ PULSE_URLS = {
 PUBLIC_INTERVAL_SECONDS = 6 * 60 * 60
 
 
+def instagram_public_profile(username):
+    """Sprawdź wyłącznie publiczne metadane konta, bez logowania i sesji."""
+    d = get("https://www.instagram.com/api/v1/users/web_profile_info/",
+            params={"username": username},
+            headers={"X-IG-App-ID": "936619743392459",
+                     "Referer": "https://www.instagram.com/" + username + "/",
+                     "Accept": "application/json"}).json()
+    user = (d.get("data") or {}).get("user") or {}
+    if str(user.get("username", "")).lower() != username.lower():
+        raise ValueError("Instagram: otrzymano inny profil")
+    count = user.get("follower_count")
+    if not valid_number(count):
+        count = (user.get("edge_followed_by") or {}).get("count")
+    if not valid_number(count):
+        raise ValueError("Instagram: brak publicznej liczby")
+    return count, "Instagram · publiczne dane", False
+
+
 def pulse_followers(platform, handle):
     template = PULSE_URLS.get(platform)
     if not template:
@@ -306,7 +324,14 @@ def main():
                 public_attempts[profile_id] = iso_now()
                 dirty = True
                 try:
-                    n, source, approximate = pulse_followers(platform, handle)
+                    if platform == "instagram":
+                        try:
+                            n, source, approximate = instagram_public_profile(handle)
+                        except Exception as instagram_exc:
+                            print("INSTAGRAM PUBLIC", profile_id, str(instagram_exc)[:110])
+                            n, source, approximate = pulse_followers(platform, handle)
+                    else:
+                        n, source, approximate = pulse_followers(platform, handle)
                 except Exception as pulse_exc:
                     print("PODSTAWOWY ODCZYT", profile_id, str(primary_exc)[:100])
                     raise RuntimeError("publiczny odczyt: " + str(pulse_exc)[:130]) from pulse_exc
