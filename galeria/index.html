@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="pl"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#FFFFFF" name="theme-color"/>
+<meta content="Galeria — Antoni Sofron (Hyeon Mu Jin, 현무진 · 賢武進). Albumy zdjęć i fotografie." name="description"/>
+<link href="https://antonisofron.github.io/antonisofron/galeria/" rel="canonical"/>
+<meta content="website" property="og:type"/><meta content="Galeria | AntoniSofron" property="og:title"/>
+<meta content="Galeria — Antoni Sofron (Hyeon Mu Jin, 현무진 · 賢武進). Albumy zdjęć i fotografie." property="og:description"/>
+<meta content="https://antonisofron.github.io/antonisofron/galeria/" property="og:url"/><meta content="pl_PL" property="og:locale"/>
+<title>Galeria | AntoniSofron</title><link rel="icon" type="image/png" sizes="192x192" href="../favicon-pieczec-v12.png"/><link rel="icon" href="../favicon-v12.ico" sizes="any"/><link rel="apple-touch-icon" href="../apple-touch-icon-v12.png"/>
+<link href="../styles-v49.css" rel="stylesheet"/><link href="gallery.css" rel="stylesheet"/><script defer="" src="../script.js"></script><script defer="" src="gallery.js"></script></head><body data-page="galeria"><a class="skip-link" data-i18n="skip" href="#main">Przejdź do treści</a><header class="site-header" id="top">
+<a aria-label="AntoniSofron — strona główna" class="brand" href="../">
+<span aria-hidden="true" class="brand-symbol"><img alt="" class="brand-symbol-image" src="../logo-antonisofron-v12.png" width="88" height="88" decoding="async"/></span>
+<span class="brand-text">
+  <strong class="brand-name"><span>ANTONI</span><span>SOFRON</span></strong>
+  <span class="brand-syllables" aria-label="Hyeon Mu Jin — 현 賢 · 무 武 · 진 進">
+    <span class="brand-syllable"><strong class="brand-latin">HYEON</strong><span class="brand-script-pair"><span class="brand-hangul" lang="ko">현</span><span class="brand-hanja" lang="zh-Hant">賢</span></span></span>
+    <span class="brand-syllable"><strong class="brand-latin">MU</strong><span class="brand-script-pair"><span class="brand-hangul" lang="ko">무</span><span class="brand-hanja" lang="zh-Hant">武</span></span></span>
+    <span class="brand-syllable"><strong class="brand-latin">JIN</strong><span class="brand-script-pair"><span class="brand-hangul" lang="ko">진</span><span class="brand-hanja" lang="zh-Hant">進</span></span></span>
+  </span>
+</span>
+</a>
+<nav aria-label="Główna nawigacja" class="desktop-nav" id="main-navigation">
+<a data-i18n="navBio" href="../">Biografia</a>
+<a data-i18n="navProjects" href="../projekty/">Projekty</a>
+<a data-i18n="navPublications" href="../publikacje/">Publikacje</a>
+<a data-i18n="navMedia" href="../media/">Media</a>
+<a aria-current="page" data-i18n="navGallery" href="../galeria/">Galeria</a>
+<a data-i18n="navContact" href="../kontakt/">Kontakt</a>
+</nav>
+<div class="header-actions">
+<button aria-label="Dostępny język: polski. Inne wersje językowe nie są jeszcze dostępne." class="control-button language-button" disabled="" id="language-toggle" title="Język polski — inne wersje w przygotowaniu" type="button"><span>PL</span><span aria-hidden="true" class="lang-lock"></span></button>
+<button aria-controls="main-navigation" aria-expanded="false" aria-label="Otwórz menu" class="mobile-menu-button" id="menu-toggle" type="button"><span aria-hidden="true">☰</span></button>
+</div>
+</header>
+<div class="site-shell"><main id="main">
+<section class="content-section gallery-section" aria-labelledby="gallery-main-title">
+  <div class="gallery-heading">
+    <span class="gallery-eyebrow">FOTOGRAFIE · ALBUMY</span>
+    <h1 id="gallery-main-title">Galeria</h1>
+    <p>Zdjęcia zebrane w osobnych albumach. Wybierz folder, aby obejrzeć fotografie w powiększeniu i przeglądać je za pomocą strzałek lub miniatur.</p>
+  </div>
+  <div class="gallery-albums-grid" id="gallery-albums" aria-live="polite">
+    <div class="gallery-empty">
+      <span class="gallery-empty-icon" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 13h15l5 6h18v19H5zM5 19V11h16l5 8"/></svg></span>
+      <h2>Tutaj pojawią się albumy</h2>
+      <p>Przygotowujemy pierwsze foldery ze zdjęciami. Po ich dodaniu otworzysz album i zobaczysz duże fotografie z paskiem miniaturek.</p>
+    </div>
+  </div>
+</section>
+<div class="site-footer-band"><footer class="footer"><span class="footer-copyright">© 2026 ANTONI SOFRON · HYEON MU JIN</span><a class="footer-email" href="mailto:antonisofron@gmail.com">antonisofron@gmail.com</a></footer></div>
+</main></div>
+<dialog id="gallery-viewer" class="gallery-viewer" aria-labelledby="gallery-viewer-title">
+ <div class="gallery-viewer-layout">
+  <div class="gallery-viewer-header">
+   <div class="gallery-viewer-info">
+    <span class="gallery-viewer-kicker">PRZEGLĄDANIE ALBUMU</span>
+    <h2 class="gallery-viewer-title" id="gallery-viewer-title"></h2>
+   </div>
+   <button type="button" class="gallery-close" id="gallery-close" aria-label="Zamknij galerię">×</button>
+  </div>
+  <div class="gallery-stage" id="gallery-stage">
+   <button type="button" class="gallery-arrow gallery-arrow-prev" id="gallery-prev" aria-label="Poprzednie zdjęcie"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+   <img id="gallery-main-image" alt="" hidden/>
+   <p id="gallery-photo-error" class="gallery-stage-fallback" hidden>Nie udało się wczytać zdjęcia.</p>
+   <button type="button" class="gallery-arrow gallery-arrow-next" id="gallery-next" aria-label="Następne zdjęcie"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+  </div>
+  <p id="gallery-photo-caption" class="gallery-photo-caption"></p>
+  <div class="gallery-viewer-footer">
+   <div class="gallery-viewer-meta">
+    <span>WYBIERZ ZDJĘCIE</span>
+    <span id="gallery-photo-count" aria-live="polite"></span>
+   </div>
+   <div class="gallery-thumbnails" id="gallery-thumbnails" role="group" aria-label="Miniatury zdjęć z wybranego albumu"></div>
+  </div>
+ </div>
+</dialog></body></html>
