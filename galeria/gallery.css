@@ -1,10 +1,9 @@
 /* Galeria | AntoniSofron — stosuje bazową paletę i typografię strony. */
 .gallery-section {min-height:calc(100vh - var(--header-height) - 87px);background:var(--paper);padding-top:clamp(72px,8vw,116px);}
 .gallery-heading {margin:0 0 46px;display:flex;flex-direction:column;gap:15px;}
-.gallery-eyebrow{color:var(--accent);font:800 10px/1.5 var(--sans);letter-spacing:.17em;text-transform:uppercase;}
 .gallery-heading h1 {font:400 clamp(52px,6vw,94px)/1.08 var(--serif);letter-spacing:-.07em;margin:0;color:var(--ink);}
 .gallery-heading h1 em {color:var(--accent);font-weight:400;}
-.gallery-heading p{font:400 15px/1.85 var(--sans);max-width:690px;color:var(--ink-soft);margin:0;}
+.gallery-heading p{font:400 15px/1.85 var(--sans);max-width:690px;color:var(--ink-soft);margin:0;text-align:justify;text-align-last:left;}
 .gallery-albums-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
 .gallery-album{display:flex;flex-direction:column;align-items:stretch;min-width:0;background:var(--paper);border:1px solid var(--line);text-align:left;padding:0;cursor:pointer;color:var(--ink);transition:transform .2s,border-color .2s;}
 .gallery-album:hover{transform:translateY(-4px);border-color:var(--accent);}
