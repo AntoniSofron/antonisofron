@@ -22,6 +22,7 @@
   object-position:top right;
   image-rendering:auto;
 }
+.projects-grid-v28 .project-card-v28.nicolai-featured {min-height:355px;}
 /* Układ tytułu pozostaje czytelny obok grafiki. */
 .projects-grid-v28 .nicolai-featured .project-content-v28 {
   padding-right:clamp(105px,19vw,205px);
