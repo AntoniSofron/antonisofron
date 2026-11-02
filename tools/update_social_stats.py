@@ -171,6 +171,47 @@ def x_followers(username):
     return n, "X API", False
 
 
+# Publiczny agregator profili, używany zapasowo i nie częściej niż raz na 6 h.
+# Źródło: https://pulse.walls.sh/docs — anonimowy dostęp do danych publicznych.
+PULSE_URLS = {
+    "youtube": "https://www.youtube.com/@{handle}",
+    "instagram": "https://www.instagram.com/{handle}/",
+    "x": "https://x.com/{handle}",
+}
+PUBLIC_INTERVAL_SECONDS = 6 * 60 * 60
+
+
+def pulse_followers(platform, handle):
+    template = PULSE_URLS.get(platform)
+    if not template:
+        raise ValueError("Niewspierana platforma")
+    url = template.format(handle=handle)
+    payload = get("https://pulse.walls.sh/profile", params={"url": url}).json()
+    if payload.get("error"):
+        raise ValueError("Publiczny odczyt: " + str(payload["error"])[:100])
+    reported_platform = str(payload.get("platform", "")).lower()
+    if reported_platform not in {platform, "twitter" if platform == "x" else platform}:
+        raise ValueError("Agregator zwrócił inny serwis: " + reported_platform)
+    reported_handle = str(payload.get("handle") or "").lstrip("@").lower()
+    if reported_handle and reported_handle != handle.lower():
+        raise ValueError("Agregator zwrócił inny profil: " + reported_handle)
+    value = payload.get("followers")
+    if not valid_number(value):
+        raise ValueError("Publiczny licznik obserwujących niedostępny")
+    # YouTube pokazuje jedynie zaokrągloną liczbę od progu 1000.
+    return value, "Pulse · " + platform, platform == "youtube" and value >= 1000
+
+
+def recent_attempt(value):
+    try:
+        dt_value = dt.datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        if dt_value.tzinfo is None:
+            return False
+        return 0 <= (dt.datetime.now(dt.timezone.utc) - dt_value).total_seconds() < PUBLIC_INTERVAL_SECONDS
+    except (ValueError, TypeError):
+        return False
+
+
 FETCHERS = {
     "discord": discord_members,
     "tiktok": tiktok_followers,
@@ -186,10 +227,25 @@ def main():
     except (OSError, ValueError):
         stats = {}
     profiles = stats.setdefault("profiles", {})
+    public_attempts = stats.setdefault("public_attempts", {})
     dirty = False
     for profile_id, (platform, handle) in PROFILES.items():
         try:
-            n, source, approximate = FETCHERS[platform](handle)
+            try:
+                n, source, approximate = FETCHERS[platform](handle)
+            except Exception as primary_exc:
+                if platform not in PULSE_URLS:
+                    raise
+                if recent_attempt(public_attempts.get(profile_id)):
+                    print("PUBLICZNY ODCZYT POMINIĘTY", profile_id, "do następnej próby za maksymalnie 6 h")
+                    continue
+                public_attempts[profile_id] = iso_now()
+                dirty = True
+                try:
+                    n, source, approximate = pulse_followers(platform, handle)
+                except Exception as pulse_exc:
+                    print("PODSTAWOWY ODCZYT", profile_id, str(primary_exc)[:100])
+                    raise RuntimeError("publiczny odczyt: " + str(pulse_exc)[:130]) from pulse_exc
             if not valid_number(n):
                 raise ValueError("Nieprawidłowa wartość")
             record = {
