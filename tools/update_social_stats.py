@@ -186,12 +186,19 @@ def tiktok_followers(username):
 def instagram_followers(username):
     token = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
     ig_id = os.getenv("INSTAGRAM_USER_ID", "").strip()
-    if token and ig_id:
-        d = get("https://graph.facebook.com/v25.0/" + ig_id, params={
-            "fields": "username,followers_count", "access_token": token
-        }).json()
+    if token:
+        if ig_id:
+            # Instagram API z Facebook Login, gdy podano numer użytkownika IG.
+            d = get("https://graph.facebook.com/v26.0/" + ig_id, params={
+                "fields": "username,followers_count", "access_token": token
+            }).json()
+        else:
+            # Instagram API z Instagram Login: identyfikator nie jest potrzebny.
+            d = get("https://graph.instagram.com/v26.0/me", params={
+                "fields": "username,followers_count"
+            }, headers={"Authorization": "Bearer " + token}).json()
         if (d.get("username") or "").lower() != username.lower():
-            raise ValueError("Instagram: wskazane ID nie należy do podanego profilu")
+            raise ValueError("Instagram: wskazany token nie należy do podanego profilu")
         n = d.get("followers_count")
         if not valid_number(n):
             raise ValueError("Instagram: brak followers_count")
@@ -312,6 +319,12 @@ def main():
     public_attempts = stats.setdefault("public_attempts", {})
     dirty = False
     for profile_id, (platform, handle) in PROFILES.items():
+        # Anonimowe próby Instagram raz na 6 godzin, zamiast żądań co 10 min.
+        # Po skonfigurowaniu oficjalnego tokena sprawdzamy co uruchomienie.
+        if (platform == "instagram" and not os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
+                and recent_attempt(public_attempts.get(profile_id))):
+            print("INSTAGRAM POMINIĘTY", profile_id, "do kolejnej próby anonimowej")
+            continue
         try:
             try:
                 n, source, approximate = FETCHERS[platform](handle)
