@@ -35,6 +35,13 @@
       "checked_at": "2026-11-02T10:31:03Z",
       "source": "YouTube · publiczny nagłówek",
       "value": 508
+    },
+    "sofroniki_instagram": {
+      "value": 42,
+      "approximate": false,
+      "manual": true,
+      "source": "Wpisano ręcznie",
+      "checked_at": "2026-11-02T11:00:13Z"
     }
   },
   "public_attempts": {
@@ -43,5 +50,5 @@
     "sofroniki_instagram": "2026-11-02T10:32:57Z",
     "sofroniki_youtube": "2026-11-02T10:28:43Z"
   },
-  "updated_at": "2026-11-02T10:32:59Z"
+  "updated_at": "2026-11-02T11:00:13Z"
 }
