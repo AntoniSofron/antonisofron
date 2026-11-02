@@ -158,7 +158,17 @@ def instagram_followers(username):
 def x_followers(username):
     token = os.getenv("X_BEARER_TOKEN", "").strip()
     if not token:
-        raise ValueError("X: wymagany oficjalny token API X_BEARER_TOKEN")
+        # Publiczne API FxEmbed, bez klucza. Weryfikujemy nazwę konta przed zapisaniem.
+        d = get("https://api.fxtwitter.com/2/profile/" + username).json()
+        if d.get("code") != 200 or not isinstance(d.get("user"), dict):
+            raise ValueError("FxEmbed: profil niedostępny")
+        user = d["user"]
+        if str(user.get("screen_name", "")).lower() != username.lower():
+            raise ValueError("FxEmbed: odpowiedź dla innego konta")
+        n = user.get("followers")
+        if not valid_number(n):
+            raise ValueError("FxEmbed: brak poprawnej liczby followers")
+        return n, "FxEmbed · X", False
     d = get("https://api.x.com/2/users/by/username/" + username,
             params={"user.fields": "public_metrics"},
             headers={"Authorization": "Bearer " + token}).json()
