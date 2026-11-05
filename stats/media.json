@@ -21,9 +21,9 @@
     },
     "sofron_discord": {
       "approximate": true,
-      "checked_at": "2026-11-05T17:39:45Z",
+      "checked_at": "2026-11-05T22:53:22Z",
       "source": "Discord",
-      "value": 767
+      "value": 766
     },
     "sofroniki_instagram": {
       "approximate": false,
@@ -51,5 +51,5 @@
     "sofroniki_instagram": "2026-11-02T10:32:57Z",
     "sofroniki_youtube": "2026-11-02T10:28:43Z"
   },
-  "updated_at": "2026-11-05T17:39:45Z"
+  "updated_at": "2026-11-05T22:53:22Z"
 }
