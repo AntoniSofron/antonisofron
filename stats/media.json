@@ -15,15 +15,15 @@
     },
     "sclavorum": {
       "approximate": true,
-      "checked_at": "2026-11-13T15:38:40Z",
+      "checked_at": "2026-11-13T21:38:23Z",
       "source": "Discord",
-      "value": 491
+      "value": 490
     },
     "sofron_discord": {
       "approximate": true,
-      "checked_at": "2026-11-13T15:38:44Z",
+      "checked_at": "2026-11-13T21:38:26Z",
       "source": "Discord",
-      "value": 763
+      "value": 762
     },
     "sofroniki_instagram": {
       "approximate": false,
@@ -46,10 +46,10 @@
     }
   },
   "public_attempts": {
-    "antoni_x": "2026-11-13T07:24:50Z",
+    "antoni_x": "2026-11-13T21:38:25Z",
     "antoni_youtube": "2026-11-02T10:28:43Z",
     "sofroniki_instagram": "2026-11-02T10:32:57Z",
     "sofroniki_youtube": "2026-11-02T10:28:43Z"
   },
-  "updated_at": "2026-11-13T15:38:44Z"
+  "updated_at": "2026-11-13T21:38:26Z"
 }
