@@ -3,13 +3,13 @@
   "profiles": {
     "antoni_x": {
       "approximate": false,
-      "checked_at": "2026-11-13T15:38:43Z",
+      "checked_at": "2026-11-14T01:48:48Z",
       "source": "FxEmbed · X",
       "value": 9
     },
     "antoni_youtube": {
       "approximate": false,
-      "checked_at": "2026-11-13T15:38:43Z",
+      "checked_at": "2026-11-14T01:48:48Z",
       "source": "YouTube · publiczny nagłówek",
       "value": 362
     },
@@ -34,13 +34,13 @@
     },
     "sofroniki_tiktok": {
       "approximate": false,
-      "checked_at": "2026-11-13T15:38:42Z",
+      "checked_at": "2026-11-14T01:48:47Z",
       "source": "TikTok",
       "value": 3085
     },
     "sofroniki_youtube": {
       "approximate": false,
-      "checked_at": "2026-11-13T15:38:42Z",
+      "checked_at": "2026-11-14T01:48:47Z",
       "source": "YouTube · publiczny nagłówek",
       "value": 507
     }
@@ -51,5 +51,5 @@
     "sofroniki_instagram": "2026-11-02T10:32:57Z",
     "sofroniki_youtube": "2026-11-02T10:28:43Z"
   },
-  "updated_at": "2026-11-13T21:38:26Z"
+  "updated_at": "2026-11-14T01:48:48Z"
 }
