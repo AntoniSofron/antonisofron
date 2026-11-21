@@ -9,19 +9,19 @@
     },
     "antoni_youtube": {
       "approximate": false,
-      "checked_at": "2026-11-21T11:40:16Z",
+      "checked_at": "2026-11-21T18:13:56Z",
       "source": "YouTube · publiczny nagłówek",
       "value": 362
     },
     "sclavorum": {
       "approximate": true,
-      "checked_at": "2026-11-21T11:40:15Z",
+      "checked_at": "2026-11-21T18:13:55Z",
       "source": "Discord",
       "value": 489
     },
     "sofron_discord": {
       "approximate": true,
-      "checked_at": "2026-11-21T11:40:17Z",
+      "checked_at": "2026-11-21T18:13:57Z",
       "source": "Discord",
       "value": 761
     },
@@ -34,22 +34,22 @@
     },
     "sofroniki_tiktok": {
       "approximate": false,
-      "checked_at": "2026-11-21T11:40:16Z",
+      "checked_at": "2026-11-21T18:13:55Z",
       "source": "TikTok",
       "value": 3082
     },
     "sofroniki_youtube": {
       "approximate": false,
-      "checked_at": "2026-11-21T11:40:16Z",
+      "checked_at": "2026-11-21T18:13:56Z",
       "source": "YouTube · publiczny nagłówek",
       "value": 507
     }
   },
   "public_attempts": {
-    "antoni_x": "2026-11-21T11:40:17Z",
+    "antoni_x": "2026-11-21T18:13:57Z",
     "antoni_youtube": "2026-11-02T10:28:43Z",
     "sofroniki_instagram": "2026-11-02T10:32:57Z",
     "sofroniki_youtube": "2026-11-02T10:28:43Z"
   },
-  "updated_at": "2026-11-21T11:40:17Z"
+  "updated_at": "2026-11-21T18:13:57Z"
 }
