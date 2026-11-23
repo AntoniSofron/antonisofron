@@ -3,14 +3,14 @@
     "sofron16": {
       "curseforge": {
         "1563902": {
-          "downloads": 681,
+          "downloads": 687,
           "favorites": 1
         }
       },
       "expected_curseforge": 1,
       "modrinth": {
         "sofron16": {
-          "downloads": 768,
+          "downloads": 772,
           "followers": 19
         }
       }
@@ -18,11 +18,11 @@
     "sofrongen": {
       "curseforge": {
         "1712000": {
-          "downloads": 62,
+          "downloads": 63,
           "favorites": 0
         },
         "sofrongen-mod": {
-          "downloads": 0,
+          "downloads": 5,
           "favorites": 0
         }
       },
@@ -41,7 +41,7 @@
     "sofronlight": {
       "curseforge": {
         "1745496": {
-          "downloads": 90,
+          "downloads": 91,
           "favorites": 1
         }
       },
@@ -56,18 +56,18 @@
     "sofronocd": {
       "curseforge": {
         "269923": {
-          "downloads": 737700,
+          "downloads": 737744,
           "favorites": 81
         }
       },
       "expected_curseforge": 1,
       "modrinth": {
         "sofronocd": {
-          "downloads": 1359,
+          "downloads": 1365,
           "followers": 8
         }
       }
     }
   },
-  "updated_at": "2026-11-23T08:05:18Z"
+  "updated_at": "2026-11-23T20:12:19Z"
 }
