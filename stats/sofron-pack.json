@@ -10,7 +10,7 @@
       "expected_curseforge": 1,
       "modrinth": {
         "sofron16": {
-          "downloads": 763,
+          "downloads": 765,
           "followers": 19
         }
       }
@@ -56,18 +56,18 @@
     "sofronocd": {
       "curseforge": {
         "269923": {
-          "downloads": 737630,
+          "downloads": 737668,
           "favorites": 81
         }
       },
       "expected_curseforge": 1,
       "modrinth": {
         "sofronocd": {
-          "downloads": 1345,
+          "downloads": 1353,
           "followers": 8
         }
       }
     }
   },
-  "updated_at": "2026-11-22T19:26:53Z"
+  "updated_at": "2026-11-23T00:26:26Z"
 }
